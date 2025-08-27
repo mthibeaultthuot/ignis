@@ -1,0 +1,16 @@
+[package]
+name = "ignis-macro"
+edition = "2024"
+version.workspace = true
+authors.workspace = true
+description.workspace = true
+documentation.workspace = true
+
+[dependencies]
+quote = "1.0.40"
+proc-macro2 = "1.0.101"
+syn = { version = "2", features = ["full", "extra-traits", "visit-mut"] }
+
+[lib]
+proc-macro = true
+
