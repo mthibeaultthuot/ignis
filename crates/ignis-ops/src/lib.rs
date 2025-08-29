@@ -1,6 +1,6 @@
-use ignis_macro::kernel;
+use ignis_macro::ignis;
 
-#[kernel]
+#[ignis]
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
 }

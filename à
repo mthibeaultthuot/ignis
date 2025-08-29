@@ -1,0 +1,10 @@
+use syn::ItemFn;
+
+struct Parser();
+
+
+
+
+impl Parser {
+    pub fn from_item(item ItemFn)
+}
