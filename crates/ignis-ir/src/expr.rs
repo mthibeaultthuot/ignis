@@ -17,8 +17,8 @@ pub enum Expr {
     },
     Binary {
         op: BinOp,
-        a: SSAVar,
-        b: SSAVar,
+        lhs: SSAVar,
+        rhs: SSAVar,
         ty: Type,
     },
 
@@ -30,8 +30,8 @@ pub enum Expr {
 
     Reduce {
         op: ReduceOp,
-        a: SSAVar,
-        b: SSAVar,
+        lhs: SSAVar,
+        rhs: SSAVar,
         ty: Type,
     },
 
