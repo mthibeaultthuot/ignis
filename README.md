@@ -43,6 +43,7 @@ ___
 ### Why?
 
 Ignis is a personal learning project:
-	•	to understand how deep learning frameworks work under the hood,
-	•	to practice Rust macros, IR design, and compiler passes,
-	•	and maybe one day turn into a usable research tool.
+
+* to understand how deep learning frameworks work under the hood,
+* to practice Rust macros, IR design, and compiler passes,
+* and maybe one day turn into a usable research tool.
