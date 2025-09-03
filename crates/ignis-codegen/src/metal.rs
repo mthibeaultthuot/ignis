@@ -45,9 +45,9 @@ impl Codegen for MetalCodegen {
         match expr {
             Expr::Binary { op, lhs, rhs, ty } => {
                 if let Some(dst) = dst {
-                    format!("  {} {}={}{}{}", Self::lower_type(ty), dst, lhs, op, rhs)
+                    format!("  {} {}={}{}{};", Self::lower_type(ty), dst, lhs, op, rhs)
                 } else {
-                    format!("{}{}{}", lhs, op, rhs)
+                    format!("{}{}{};", lhs, op, rhs)
                 }
             }
 
