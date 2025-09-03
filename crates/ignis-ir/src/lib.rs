@@ -4,6 +4,7 @@ pub mod kernel;
 pub mod memory;
 pub mod ops;
 pub mod stmt;
+pub mod to_token_impl;
 pub mod type_sys;
 
 pub use builtins::*;

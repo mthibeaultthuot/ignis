@@ -9,6 +9,10 @@ version = "1.0.0"
 [[package]]
 name = "ignis-ir"
 version = "1.0.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+]
 
 [[package]]
 name = "ignis-macro"
@@ -25,6 +29,7 @@ dependencies = [
 name = "ignis-ops"
 version = "1.0.0"
 dependencies = [
+ "ignis-ir",
  "ignis-macro",
 ]
 

@@ -8,3 +8,4 @@ documentation.workspace = true
 
 [dependencies]
 ignis-macro = { path = "../ignis-macro/" }
+ignis-ir = { path = "../ignis-ir" }
