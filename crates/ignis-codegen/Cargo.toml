@@ -1,0 +1,10 @@
+[package]
+name = "ignis-codegen"
+edition = "2024"
+version.workspace = true
+authors.workspace = true
+description.workspace = true
+documentation.workspace = true
+
+[dependencies]
+ignis-ir = { path = "../ignis-ir" }

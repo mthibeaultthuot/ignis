@@ -21,14 +21,11 @@ pub fn ignis(_attr: TokenStream, input: TokenStream) -> TokenStream {
     let mut parser = Parser::new(item_fn.clone());
     let kernel = match parser.parse() {
         Ok(kernel) => kernel,
-        Err(_e) => {
-            panic!("unable to parse #[ignis");
-        }
+        Err(_e) => panic!("unable to parse #[ignis"),
     };
 
     let expanded = quote! {
         pub struct #struct_ident;
-
         impl #struct_ident {
             pub fn to_ir() -> ignis_ir::Kernel {
                 #kernel

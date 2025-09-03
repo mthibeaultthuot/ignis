@@ -3,6 +3,13 @@
 version = 4
 
 [[package]]
+name = "ignis-codegen"
+version = "1.0.0"
+dependencies = [
+ "ignis-ir",
+]
+
+[[package]]
 name = "ignis-core"
 version = "1.0.0"
 
@@ -26,12 +33,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "ignis-metal"
+version = "1.0.0"
+
+[[package]]
 name = "ignis-ops"
 version = "1.0.0"
 dependencies = [
  "ignis-ir",
  "ignis-macro",
 ]
+
+[[package]]
+name = "ignis-runtime"
+version = "1.0.0"
 
 [[package]]
 name = "proc-macro2"

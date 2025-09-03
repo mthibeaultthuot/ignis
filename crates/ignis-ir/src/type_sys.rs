@@ -9,6 +9,13 @@ impl fmt::Debug for SSAVar {
         write!(f, "%{}", self.0)
     }
 }
+
+impl fmt::Display for SSAVar {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "v{}", self.0)
+    }
+}
+
 impl Hash for SSAVar {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.0.hash(state)
