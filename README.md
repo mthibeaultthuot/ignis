@@ -1,13 +1,11 @@
 # Ignis
 ##### Rust-first experimental deep learning compiler & kernel DSL
 
-___
 
 ## Status
 ##### ⚠️ Work in progress — very early ⚠️
 
 
-___
 
 ## What it does today
 - Provide a proc-macro for parsing syn ItemFn
@@ -37,7 +35,6 @@ Kernel {
   }
 }
 ```
-___
 
 
 ### Why?
