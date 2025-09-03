@@ -1,7 +1,7 @@
-use ignis_macro::kernel;
+use ignis_macro::ignis;
 
-#[kernel]
-pub fn add(left: u64, right: u64) -> u64 {
+#[ignis]
+pub fn Add(left: u64, right: u64) -> u64 {
     left + right
 }
 
@@ -11,7 +11,7 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        println!("{:?}", result);
+        let k = Add::to_ir();
+        println!("{:#?}", k);
     }
 }

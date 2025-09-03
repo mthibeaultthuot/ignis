@@ -9,7 +9,7 @@ documentation = "https://ignis.veemdigital.com"                                 
 
 [workspace]
 resolver = "3"
-members = [ "crates/ignis-core", "crates/ignis-ir", "crates/ignis-macro", "crates/ignis-ops"]
+members = [ "crates/ignis-codegen", "crates/ignis-core", "crates/ignis-ir", "crates/ignis-macro", "crates/ignis-metal", "crates/ignis-ops", "crates/ignis-runtime"]
 
 [workspace.dependencies]
 anyhow = "1.0.98"

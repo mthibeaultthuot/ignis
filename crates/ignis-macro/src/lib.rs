@@ -1,113 +1,37 @@
+mod error;
+mod lowering;
+mod parser;
+
 extern crate proc_macro;
+use std::panic;
+
 use proc_macro::TokenStream;
-use quote::ToTokens;
-use syn::Item;
+use quote::quote;
+use syn::{ItemFn, parse_macro_input};
+
+use crate::parser::Parser;
 
 #[proc_macro_attribute]
-pub fn kernel(_attr: TokenStream, item: TokenStream) -> TokenStream {
-    let ts: proc_macro2::TokenStream = item.clone().into();
-    for token in ts {
-        println!("{:?}", token);
-    }
+pub fn ignis(_attr: TokenStream, input: TokenStream) -> TokenStream {
+    let input_clone = input.clone();
+    let item_fn: ItemFn = parse_macro_input!(input_clone as ItemFn);
+    let fn_name = &item_fn.sig.ident;
+    let struct_ident = fn_name.clone();
 
-    item
-}
+    let mut parser = Parser::new(item_fn.clone());
+    let kernel = match parser.parse() {
+        Ok(kernel) => kernel,
+        Err(_e) => panic!("unable to parse #[ignis"),
+    };
 
-#[derive(Debug, Clone, PartialEq)]
-enum Atom<'a> {
-    String(std::borrow::Cow<'a, str>),
-    Number(f64),
-    Nil,
-    Bool(bool),
-    Ident(&'a str),
-    Super,
-    This,
-}
+    let expanded = quote! {
+        pub struct #struct_ident;
+        impl #struct_ident {
+            pub fn to_ir() -> ignis_ir::Kernel {
+                #kernel
+            }
+        }
+    };
 
-#[derive(Debug, Clone, Copy, PartialEq)]
-enum Op {
-    Minus,
-    Plus,
-    Star,
-    BangEqual,
-    EqualEqual,
-    LessEqual,
-    GreaterEqual,
-    Less,
-    Greater,
-    Slash,
-    Bang,
-    And,
-    Or,
-    Call,
-    For,
-    Class,
-    Print,
-    Return,
-    Field,
-    Var,
-    While,
-    Group,
-}
-
-#[derive(Debug, Clone, PartialEq)]
-enum TokenTree<'a> {
-    Atom(Atom<'a>),
-    Cons(Op, Vec<TokenTree<'a>>),
-    Fn {
-        name: &'a str,
-        parameters: Box<TokenTree<'a>>,
-        body: Box<TokenTree<'a>>,
-    },
-    Call,
-    If,
-    For,
-}
-
-#[derive(Debug, Clone, PartialEq)]
-struct Token<'a> {
-    token: TokenKind<'a>,
-}
-
-#[derive(Debug, Clone, PartialEq)]
-enum TokenKind<'a> {
-    Fn,
-    Ident(&'a str),
-    LeftParen,
-    RightParen,
-    LeftBrace,
-    RightBrace,
-    Comma,
-    Dot,
-    Minus,
-    Plus,
-    Semicolon,
-    Star,
-    BangEqual,
-    EqualEqual,
-    LessEqual,
-    GreaterEqual,
-    Less,
-    Greater,
-    Slash,
-    Bang,
-    Equal,
-    String,
-    Number(f64),
-    And,
-    Class,
-    Else,
-    False,
-    For,
-    Fun,
-    If,
-    Nil,
-    Or,
-    Print,
-    Return,
-    Super,
-    This,
-    True,
-    Var,
-    While,
+    expanded.into()
 }

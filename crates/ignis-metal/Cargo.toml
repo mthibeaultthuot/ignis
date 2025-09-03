@@ -1,5 +1,5 @@
 [package]
-name = "ignis-ops"
+name = "ignis-metal"
 edition = "2024"
 version.workspace = true
 authors.workspace = true
@@ -7,5 +7,3 @@ description.workspace = true
 documentation.workspace = true
 
 [dependencies]
-ignis-macro = { path = "../ignis-macro/" }
-ignis-ir = { path = "../ignis-ir" }
