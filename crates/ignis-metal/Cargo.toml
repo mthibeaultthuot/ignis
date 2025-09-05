@@ -7,3 +7,10 @@ description.workspace = true
 documentation.workspace = true
 
 [dependencies]
+ignis-runtime = { path = "../ignis-runtime/" }
+objc2-metal = { version = "0.3.1", features = [
+    "MTLCommandEncoder",
+    "MTLComputeCommandEncoder",
+] }
+objc2 = { version = "0.6.2", features = [] }
+objc2-foundation = { version = "0.3.1", features = [] }
