@@ -28,11 +28,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "ignis"
+version = "1.0.0"
+dependencies = [
+ "ignis-codegen",
+ "ignis-common",
+ "ignis-core",
+ "ignis-ir",
+ "ignis-macro",
+ "ignis-metal",
+ "ignis-runtime",
+]
+
+[[package]]
 name = "ignis-codegen"
 version = "1.0.0"
 dependencies = [
  "ignis-ir",
 ]
+
+[[package]]
+name = "ignis-common"
+version = "1.0.0"
 
 [[package]]
 name = "ignis-core"
@@ -65,14 +82,6 @@ dependencies = [
  "objc2",
  "objc2-foundation",
  "objc2-metal",
-]
-
-[[package]]
-name = "ignis-ops"
-version = "1.0.0"
-dependencies = [
- "ignis-ir",
- "ignis-macro",
 ]
 
 [[package]]

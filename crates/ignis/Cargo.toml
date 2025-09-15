@@ -1,0 +1,14 @@
+[package]
+name = "ignis"
+version = "1.0.0"
+edition = "2021"
+description = "Façade crate for the Ignis deep learning framework"
+
+[dependencies]
+ignis-codegen = { path = "../ignis-codegen", version = "1.0.0" }
+ignis-common = { path = "../ignis-common", version = "1.0.0" }
+ignis-core = { path = "../ignis-core", version = "1.0.0" }
+ignis-ir = { path = "../ignis-ir", version = "1.0.0" }
+ignis-macro = { path = "../ignis-macro", version = "1.0.0" }
+ignis-metal = { path = "../ignis-metal", version = "1.0.0" }
+ignis-runtime = { path = "../ignis-runtime", version = "1.0.0" }

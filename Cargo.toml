@@ -4,12 +4,21 @@
 version = "1.0.0"
 authors = ["Mathieu Thibeault-Thuot"]
 description = "A blazingly fast, educational-first deep learning framework for students and researchers"
-documentation = "https://ignis.veemdigital.com"                                                          # not yet
-
+documentation = "https://ignis.veemdigital.com"
+repository = "https://github.com/veemdigital/ignis"
+categories = ["science"]
 
 [workspace]
 resolver = "3"
-members = [ "crates/ignis-codegen", "crates/ignis-core", "crates/ignis-ir", "crates/ignis-macro", "crates/ignis-metal", "crates/ignis-ops", "crates/ignis-runtime"]
+members = [ "crates/ignis",
+  "crates/ignis-codegen",
+  "crates/ignis-common",
+  "crates/ignis-core",
+  "crates/ignis-ir",
+  "crates/ignis-macro",
+  "crates/ignis-metal",
+  "crates/ignis-runtime",
+]
 
 [workspace.dependencies]
 anyhow = "1.0.98"
