@@ -1,5 +1,3 @@
-use std::fmt::Binary;
-
 use ignis_ir::{DType, Expr, ExprStmt, Kernel, SSAVar, Stmt};
 
 use crate::codegen::Codegen;
