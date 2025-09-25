@@ -1,7 +1,20 @@
+use crate::SSAVar;
 use std::collections::HashMap;
 
-use ignis_ir::SSAVar;
-
+/// Context for the Static Single Assignment (SSA)
+///
+/// The main goal purpose of this context is to manage
+/// variables in a way that each variable is assigned
+/// only once, ensuring that each variable has a unique
+/// identifier.
+///
+/// Example :
+/// ```text %0 = a + b
+/// %1 = %0 * c
+/// %2 = %1 - d```
+///
+/// where %0, %1, %2 are SSA variables.
+#[derive(Debug, Clone)]
 pub struct LowerCtx {
     next_ssa: u32,
     vars: HashMap<String, SSAVar>,

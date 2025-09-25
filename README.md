@@ -2,7 +2,7 @@
 ##### Rust-first experimental deep learning compiler & kernel DSL
 
 
-## Status
+## Status `[WIP]`
 ##### ⚠️ Work in progress — very early ⚠️
 
 
@@ -39,8 +39,4 @@ Kernel {
 
 ### Why?
 
-Ignis is a personal learning project:
-
-* to understand how deep learning frameworks work under the hood,
-* to practice Rust macros, IR design, and compiler passes,
-* and maybe one day turn into a usable research tool.
+The main goal of Ignis is to provide a Rust-first experimental deep learning compiler and kernel DSL. It aims to understand how deep learning frameworks work under the hood, practice Rust macros, IR design, and compiler passes, and maybe one day turn into a usable research tool.

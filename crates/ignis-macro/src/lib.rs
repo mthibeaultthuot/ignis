@@ -1,45 +1,60 @@
+mod builtins;
+mod context;
 mod error;
-mod lowering;
+mod expr;
+mod kernel;
+mod memory;
+mod ops;
 mod parser;
+mod stmt;
+mod to_token_impl;
+mod type_sys;
+
+use builtins::*;
+use context::*;
+use expr::*;
+use kernel::*;
+use memory::*;
+use ops::*;
+use stmt::*;
+use type_sys::*;
 
 extern crate proc_macro;
 use std::panic;
 
-use proc_macro::{Ident, Span, TokenStream};
+use proc_macro::TokenStream;
 use quote::quote;
-use syn::{ItemFn, parse_macro_input};
+use syn::ItemFn;
 
 use crate::parser::Parser;
 
 #[proc_macro_attribute]
 pub fn ignis(_attr: TokenStream, input: TokenStream) -> TokenStream {
-    let input_clone = input.clone();
-    let item_fn: ItemFn = parse_macro_input!(input_clone as ItemFn);
+    match ignis_impl(input) {
+        Ok(token) => token,
+        Err(_) => panic!("unable to parse #[ignis]"),
+    }
+}
+
+fn ignis_impl(input: TokenStream) -> Result<proc_macro::TokenStream, syn::Error> {
+    let item_fn: ItemFn = syn::parse(input)?;
     let fn_name = &item_fn.sig.ident;
     let struct_ident = fn_name.clone();
-    let fn_name_lower = fn_name.to_string().to_lowercase();
-    let fn_name_lower_ident = syn::Ident::new(&fn_name_lower, proc_macro2::Span::call_site());
-
-    let inputs: Vec<_> = item_fn.sig.inputs.iter().collect();
 
     let mut parser = Parser::new(item_fn.clone());
     let kernel = match parser.parse() {
         Ok(kernel) => kernel,
-        Err(_e) => panic!("unable to parse #[ignis"),
+        Err(_) => panic!("unable to parse #[ignis"),
     };
 
     let expanded = quote! {
         pub struct #struct_ident;
         impl #struct_ident {
-            pub fn to_ir() -> ignis_ir::Kernel {
+            pub fn to_ir() -> Kernel {
                 #kernel
-            }
-
-            pub fn #fn_name_lower_ident(#(#inputs),*) -> Self {
-                Self
             }
         }
     };
 
-    expanded.into()
+    Ok(expanded.into())
 }

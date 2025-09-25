@@ -67,7 +67,6 @@ dependencies = [
 name = "ignis-macro"
 version = "1.0.0"
 dependencies = [
- "ignis-ir",
  "proc-macro2",
  "quote",
  "syn",

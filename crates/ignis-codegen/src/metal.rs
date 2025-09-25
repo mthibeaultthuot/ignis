@@ -1,4 +1,4 @@
-use ignis_ir::{DType, Expr, ExprStmt, Kernel, SSAVar, Stmt};
+/*use ignis_ir::{DType, Expr, ExprStmt, Kernel, SSAVar, Stmt};
 
 use crate::codegen::Codegen;
 
@@ -99,3 +99,4 @@ mod test {
         println!("{}", output);
     }
 }
+*/

@@ -1,4 +1,4 @@
-use ignis_ir::{DType, Expr, ExprStmt, Kernel, SSAVar, Stmt};
+/*use ignis_ir::{DType, Expr, ExprStmt, Kernel, SSAVar, Stmt};
 
 pub trait Codegen {
     fn lower_kernel(kernel: &Kernel) -> String;
@@ -13,3 +13,4 @@ pub trait Codegen {
 fn lower_for_backend<B: Codegen>(kernel: &Kernel) -> String {
     B::lower_kernel(kernel)
 }
+*/
