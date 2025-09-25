@@ -1,5 +1,6 @@
 use crate::{BinOp, BufferId, Builtin, LowerCtx, ReduceOp, SSAVar, Type, UnOp, error::MacroError};
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq)]
 pub enum Expr {
     ConstI(i64, Type),

@@ -1,10 +1,13 @@
-use crate::{Expr, ExprStmt, Kernel, Stmt, Type};
-use syn::{ExprBinary, ItemFn};
+use std::mem;
+
+use crate::{Expr, ExprStmt, Kernel, KernelBlock, Stmt};
+use syn::ItemFn;
 
 use crate::{LowerCtx, error::MacroError};
 
 /// Parser for Ignis kernels.
 /// Parses syn token into Ignis AST.
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub struct Parser {
     // the parsed Rust function AST
@@ -22,24 +25,22 @@ impl Parser {
     }
 
     pub fn parse(&mut self) -> Result<Kernel, MacroError> {
-        let mut kernel = Kernel::empty();
-
-        let stmts = self.item_fn.block.stmts.clone();
-        for stmt in stmts {
-            let new_expr = match stmt {
-                syn::Stmt::Expr(expr, _) => Expr::parse_from_syn(&expr, &mut self.ctx)?,
-                _ => {
-                    return Err(MacroError::UnsupportedStmtType(format!(
-                        "Unsupported statement in ignis : {:?}",
-                        stmt,
-                    )));
+        // Syn ItemFn Block Stmt is actaly box so mem::take(&mut T)
+        let stmts = mem::take(&mut self.item_fn.block.stmts)
+            .into_iter()
+            .map(|item| match item {
+                syn::Stmt::Expr(expr, _) => {
+                    let new_expr = Expr::parse_from_syn(&expr, &mut self.ctx)?;
+                    Ok(Stmt::Expr(ExprStmt {
+                        dst: Some(self.ctx.fresh()),
+                        expr: new_expr,
+                    }))
                 }
-            };
-            kernel.block.stmts.push(Stmt::Expr(ExprStmt {
-                dst: Some(self.ctx.fresh()),
-                expr: new_expr,
-            }));
-        }
-        Ok(kernel)
+                _ => panic!("Unsupported statement in ignis"),
+            })
+            .collect::<Result<Vec<_>, MacroError>>()?;
+        Ok(Kernel {
+            block: KernelBlock::new(stmts),
+        })
     }
 }

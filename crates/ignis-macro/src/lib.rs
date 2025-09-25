@@ -20,10 +20,10 @@ use stmt::*;
 use type_sys::*;
 
 extern crate proc_macro;
-use std::panic;
 
 use proc_macro::TokenStream;
 use quote::quote;
+use std::panic;
 use syn::ItemFn;
 
 use crate::parser::Parser;

@@ -1,5 +1,6 @@
 use core::fmt;
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq, Hash)]
 pub enum AtomicOp {
     Add,
@@ -30,6 +31,7 @@ impl core::fmt::Display for AtomicOp {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq, Hash)]
 pub enum AddressSpace {
     Global,
@@ -49,6 +51,7 @@ impl fmt::Display for AddressSpace {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq, Hash)]
 pub enum BarrierScope {
     ThreadGroup,
@@ -64,6 +67,7 @@ impl fmt::Display for BarrierScope {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq, Hash)]
 pub enum MemFenceScope {
     ThreadGroup,

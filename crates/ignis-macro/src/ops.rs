@@ -1,5 +1,6 @@
 use std::fmt;
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq)]
 pub enum UnOp {
     Neg,
@@ -11,6 +12,7 @@ pub enum UnOp {
     Log,
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq)]
 pub enum BinOp {
     Add,
@@ -57,6 +59,7 @@ impl fmt::Display for BinOp {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq)]
 pub enum ReduceOp {
     Add,
