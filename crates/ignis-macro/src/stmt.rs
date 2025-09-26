@@ -2,6 +2,7 @@ use crate::{
     AddressSpace, AtomicOp, BarrierScope, BufferId, Expr, KernelBlock, MemFenceScope, SSAVar, Type,
 };
 
+#[allow(dead_code)]
 #[derive(Clone, Debug)]
 pub enum Stmt {
     Local(LocalStmt),
@@ -16,6 +17,7 @@ pub struct LocalStmt {
     pub init: Expr,
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug)]
 pub enum ItemStmt {
     BufferDecl {
@@ -35,6 +37,7 @@ pub struct ExprStmt {
     pub expr: Expr,
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug)]
 pub enum MacroStmt {
     Barrier {

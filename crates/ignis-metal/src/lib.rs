@@ -1,7 +1,6 @@
-use ignis_runtime::Runtime;
-use objc2::rc::{Id, Retained};
+use objc2::rc::Retained;
 use objc2::runtime::ProtocolObject;
-use objc2_foundation::{NSError, NSString};
+use objc2_foundation::NSString;
 use objc2_metal::MTLCommandEncoder;
 use objc2_metal::MTLComputePipelineState;
 use objc2_metal::MTLFunction;

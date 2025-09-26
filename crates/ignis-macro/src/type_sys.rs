@@ -36,6 +36,7 @@ impl Hash for BufferId {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq)]
 pub enum DType {
     I32,
@@ -52,6 +53,8 @@ pub struct Type {
     pub scalar: DType,
     pub lanes: u8,
 }
+
+#[allow(dead_code)]
 impl Type {
     pub const I32: Self = Self {
         scalar: DType::I32,

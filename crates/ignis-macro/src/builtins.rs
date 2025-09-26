@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 #[derive(Clone, Debug, Copy, PartialEq, Eq)]
 pub enum Builtin {
     ThreadIdxX,
